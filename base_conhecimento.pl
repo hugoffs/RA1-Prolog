@@ -2,6 +2,7 @@
 como execultar o programa: 
 swipl
 consult("base_conhecimento.pl").
+consult("regras.pl").
 realizar a consulta
 */
 
@@ -26,44 +27,51 @@ trilha(redes_e_infraestrutura,
 
 % fazer 5 perfil para cada tilha 
 % perfil(Curso, Materia, Relevancia)
+
+% ciencia de dados
 perfil(ciencia_de_dados, matematica_estatistica, 5).
-perfil(ciencia_de_dados, logica_programacao, 4).
-perfil(ciencia_de_dados, design_visual, 1).
+perfil(ciencia_de_dados, logica_programacao, 3).
+perfil(ciencia_de_dados, design_visual, 2).
 perfil(ciencia_de_dados, redes_computadores, 2).
 perfil(ciencia_de_dados, sistemas_operacionais, 2).
 
-perfil(desenvolvimento_web, design_visual, 3).
+% desenvolvimento web
+perfil(desenvolvimento_web, design_visual, 4).
 perfil(desenvolvimento_web, logica_programacao, 4).
 perfil(desenvolvimento_web, sistemas_operacionais, 2).
 perfil(desenvolvimento_web, redes_computadores, 2).
 perfil(desenvolvimento_web, matematica_estatistica, 1).
 
-perfil(inteligencia_artificial, logica_programacao, 4).
-perfil(inteligencia_artificial, matematica_estatistica, 5).
+% inteligência artificial
+perfil(inteligencia_artificial, logica_programacao, 5).
+perfil(inteligencia_artificial, matematica_estatistica, 4).
 perfil(inteligencia_artificial, sistemas_operacionais, 2).
 perfil(inteligencia_artificial, redes_computadores, 2).
 perfil(inteligencia_artificial, design_visual, 1).
 
+% segurança da informação
 perfil(seguranca_da_informacao, sistemas_operacionais, 5).
 perfil(seguranca_da_informacao, redes_computadores, 4).
 perfil(seguranca_da_informacao, logica_programacao, 3).
 perfil(seguranca_da_informacao, matematica_estatistica, 2).
 perfil(seguranca_da_informacao, design_visual, 1).
 
-perfil(redes_e_infraestrutura, redes_computadores, 4).
-perfil(redes_e_infraestrutura, sistemas_operacionais, 3).
+% redes e infraestrutura
+perfil(redes_e_infraestrutura, redes_computadores, 5).
+perfil(redes_e_infraestrutura, sistemas_operacionais, 4).
 perfil(redes_e_infraestrutura, logica_programacao, 2).
 perfil(redes_e_infraestrutura, matematica_estatistica, 1).
 perfil(redes_e_infraestrutura, design_visual, 1).
 
-
-% pergunta(ID, Texto, Materia), sendo pergunta uma lista de perguntas
+% pergunta(ID, Texto, Materia)
 perguntas([
     pergunta(1, 'Você tem afinidade com matemática e estatística?', matematica_estatistica),
     pergunta(2, 'Você gosta de criar interfaces e experiências visuais?', design_visual),
     pergunta(3, 'Você se interessa por lógica de programação e algoritmos?', logica_programacao),
     pergunta(4, 'Você tem conhecimento em redes de computadores e segurança?', redes_computadores),
-    pergunta(5, 'Você entende de sistemas operacionais e infraestrutura de TI?', sistemas_operacionais)
+    pergunta(6, 'Você gosta de resolver problemas complexos e raciocínio lógico?', logica_programacao),
+    pergunta(7, 'Você se interessa por automatizar processos ou criar scripts?', sistemas_operacionais),
+    pergunta(8, 'Você gosta de experimentar novas tecnologias e ferramentas de TI?', redes_computadores)
 ]).
 
 

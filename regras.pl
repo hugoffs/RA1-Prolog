@@ -21,8 +21,6 @@ perguntar_lista([pergunta(_, Texto, Materia)|Resto]) :-
 
 % ----------------- A FAZER ------------------
 /*
-    ● Calcular uma pontuação de compatibilidade para cada trilha com base nas respostas.
-    ● Determinar a(s) trilha(s) mais recomendada(s).
     ● Exibir os resultados de forma organizada
 */
 
