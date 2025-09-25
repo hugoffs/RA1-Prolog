@@ -5,6 +5,7 @@ consult("base_conhecimento.pl").
 realizar a consulta
 */
 
+
 % trilha(Nome, Descricao).
 trilha(ciencia_de_dados,
     'Analise e interpretacao de grandes volumes de dados para extrair conhecimento.').
@@ -24,6 +25,7 @@ trilha(redes_e_infraestrutura,
 % perfil(nome, Materia, relevancia)
 
 % fazer 5 perfil para cada tilha 
+% perfil(Curso, Materia, Relevancia)
 perfil(ciencia_de_dados, matematica_estatistica, 5).
 perfil(ciencia_de_dados, logica_programacao, 4).
 perfil(ciencia_de_dados, design_visual, 1).
@@ -42,17 +44,18 @@ perfil(inteligencia_artificial, sistemas_operacionais, 2).
 perfil(inteligencia_artificial, redes_computadores, 2).
 perfil(inteligencia_artificial, design_visual, 1).
 
-perfil(seguranca_da_informacao,sistemas_operacionais , 5).
-perfil(seguranca_da_informacao,redes_computadores , 4).
-perfil(seguranca_da_informacao,logica_programacao , 3).
-perfil(seguranca_da_informacao,matematica_estatistica , 2).
-perfil(seguranca_da_informacao,design_visual , 1).
+perfil(seguranca_da_informacao, sistemas_operacionais, 5).
+perfil(seguranca_da_informacao, redes_computadores, 4).
+perfil(seguranca_da_informacao, logica_programacao, 3).
+perfil(seguranca_da_informacao, matematica_estatistica, 2).
+perfil(seguranca_da_informacao, design_visual, 1).
 
-perfil(redes_e_infraestrutura,redes_computadores , 4).
-perfil(redes_e_infraestrutura,sistemas_operacionais , 3).
-perfil(redes_e_infraestrutura,logica_programacao , 2).
-perfil(redes_e_infraestrutura,matematica_estatistica , 1).
-perfil(redes_e_infraestrutura,design_visual , 1).
+perfil(redes_e_infraestrutura, redes_computadores, 4).
+perfil(redes_e_infraestrutura, sistemas_operacionais, 3).
+perfil(redes_e_infraestrutura, logica_programacao, 2).
+perfil(redes_e_infraestrutura, matematica_estatistica, 1).
+perfil(redes_e_infraestrutura, design_visual, 1).
+
 
 % pergunta(ID, Texto, Materia), sendo pergunta uma lista de perguntas
 perguntas([

@@ -3,6 +3,7 @@
 
 % declarar variável dinâmica para armazenar respostas
 :- dynamic(materia_escolhida/1).
+:- dynamic(lista_de_opcoes/1).
 
 /* 
     ● Conduzir o questionário de forma interativa.
@@ -26,23 +27,40 @@ perguntar_lista([pergunta(_, Texto, Materia)|Resto]) :-
 
 % calcular pontuação de compatibilidade para cada trilha
 
-% -------------------- TESTE --------------------
+% calcular pontuação por curso
+pontuacao_por_curso(Curso, Pontuacao) :-
+    findall(X,
+        ( perfil(Curso, Materia, X),
+          materia_escolhida(Materia)   % só verifica se a matéria foi escolhida
+        ),
+        ListaValores),
+    sum_list(ListaValores, Pontuacao).
+
+% gerar lista de pontuações de todos os cursos
+pontuacoes_cursos(ListaCursoPontuacao) :-
+    findall((Curso, Pontuacao),
+        ( trilha(Curso, _Descricao),
+          pontuacao_por_curso(Curso, Pontuacao)
+        ),
+        ListaCursoPontuacao).
+
+% exibir resultado
+mostrar_resultados :-
+    pontuacoes_cursos(Lista),
+    format('Pontuações por curso:~n'),
+    forall(member((Curso, Pontuacao), Lista),
+           format('- ~w: ~w~n', [Curso, Pontuacao])).
 
 % iniciar questionário
 inicio :-
     perguntas(Lista),
-    retractall(materia_escolhida(_)),  % limpa respostas anteriores
+    retractall(materia_escolhida(_)),
     perguntar_lista(Lista),
-    
-    % calcular pontuação para cada trilha
-    calculo_pontuacao(TrilhasPontuacao),
-
-    format('Matérias escolhidas:~n'),
-    mostrar_materias.
+    mostrar_materias,
+    mostrar_resultados.
 
 % mostrar respostas armazenadas
 mostrar_materias :-
-    materia_escolhida(Materia),
-    format('- ~w~n', [Materia]),
-    fail.
-mostrar_materias.  % para parar o backtracking
+    format('Matérias escolhidas:~n'),
+    forall(materia_escolhida(Materia),
+           format('- ~w~n', [Materia])).
