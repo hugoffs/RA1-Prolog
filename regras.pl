@@ -3,7 +3,8 @@
 
 % declarar variável dinâmica para armazenar respostas
 :- dynamic(materia_escolhida/1).
-:- dynamic(lista_de_opcoes/1).
+
+% consult("regras.pl").
 
 /* 
     ● Conduzir o questionário de forma interativa.
@@ -51,13 +52,37 @@ mostrar_resultados :-
     forall(member((Curso, Pontuacao), Lista),
            format('- ~w: ~w~n', [Curso, Pontuacao])).
 
+% Exibir melhor resultado
+% Exibir melhor resultado com justificativa
+mostrar_curso_recomendado :-
+    pontuacoes_cursos(Lista),
+    findall(Pontuacao, member((_C, Pontuacao), Lista), Pontuacoes),
+    max_list(Pontuacoes, MaxPontuacao),
+    format('\nCurso(s) mais recomendado(s) (pontuação ~w):~n', [MaxPontuacao]),
+    forall(
+        member((Curso, MaxPontuacao), Lista),
+        ( format('- ~w~n', [Curso]),
+          justificar(Curso)
+        )
+    ).
+
+
+% Recomendacao Justificada
+justificar(Curso) :-
+    format('Motivos para recomendar o curso ~w:~n', [Curso]),
+    forall(materia_escolhida(Materia),
+           ( perfil(Curso, Materia, Relevancia),
+             Relevancia > 0,
+             format('- Afinidade com ~w (relevância: ~w)~n', [Materia, Relevancia])
+           )).
+
 % iniciar questionário
 inicio :-
     perguntas(Lista),
     retractall(materia_escolhida(_)),
     perguntar_lista(Lista),
     mostrar_materias,
-    mostrar_resultados.
+    mostrar_curso_recomendado.
 
 % mostrar respostas armazenadas
 mostrar_materias :-
