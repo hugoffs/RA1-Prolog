@@ -69,9 +69,9 @@ perguntas([
     pergunta(2, 'Você gosta de criar interfaces e experiências visuais?', design_visual),
     pergunta(3, 'Você se interessa por lógica de programação e algoritmos?', logica_programacao),
     pergunta(4, 'Você tem conhecimento em redes de computadores e segurança?', redes_computadores),
-    pergunta(6, 'Você gosta de resolver problemas complexos e raciocínio lógico?', logica_programacao),
-    pergunta(7, 'Você se interessa por automatizar processos ou criar scripts?', sistemas_operacionais),
-    pergunta(8, 'Você gosta de experimentar novas tecnologias e ferramentas de TI?', redes_computadores)
+    pergunta(5, 'Você gosta de resolver problemas complexos e raciocínio lógico?', logica_programacao),
+    pergunta(6, 'Você se interessa por automatizar processos ou criar scripts?', sistemas_operacionais),
+    pergunta(7, 'Você gosta de experimentar novas tecnologias e ferramentas de TI?', redes_computadores)
 ]).
 
 
