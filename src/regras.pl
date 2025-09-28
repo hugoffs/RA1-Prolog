@@ -100,3 +100,25 @@ mostrar_materias :-
     format('Matérias escolhidas:~n'),
     forall(materia_escolhida(Materia),
            format('- ~w~n', [Materia])).
+
+
+% aplica as respostas carregadas pelo consult
+aplicar_respostas :-
+    % garante que existe resposta/2 carregada
+    ( current_predicate(resposta/2)
+    -> true
+    ;  format('Nenhum arquivo de teste carregado. Use consult(\'tests/perfil_teste_X.pl\').~n'),
+       fail
+    ),
+    perguntas(Lista),
+    forall(
+        member(pergunta(ID, _Texto, Materia), Lista),
+        ( resposta(ID, s) -> assertz(materia_escolhida(Materia)) ; true )
+    ).
+
+% Executa o teste sem entrada manual.
+executar_teste :-
+    retractall(materia_escolhida(_)),
+    aplicar_respostas,
+    mostrar_materias,
+    mostrar_curso_recomendado.
