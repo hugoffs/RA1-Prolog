@@ -1,11 +1,12 @@
 /*
 como execultar o programa: 
-swipl
-consult("base_conhecimento.pl").
-consult("regras.pl").
-realizar a consulta
-*/
 
+swipl
+?- consult('src/base_conhecimento.pl').
+?- consult('src/regras.pl').
+?- iniciar.
+
+*/
 
 % trilha(Nome, Descricao).
 trilha(ciencia_de_dados,
@@ -74,10 +75,8 @@ perguntas([
     pergunta(7, 'Você gosta de experimentar novas tecnologias e ferramentas de TI?', redes_computadores)
 ]).
 
-
-
 % teste realizado para aparecer todos os perfil: ?-findall((Nome,Descricao), trilha(Nome,Descricao), Lista)
-% perfil(ID, Texto, L).
+% perfil(Curso, Materia, Relevancia).
 % teste realizado para aparecer todos os perfil: ?-findall((Nome,Materia,Relevancia), perfil(Nome,Materia,Relevancia), Lista)
 % pergunta(ID, Texto, Materia).
 % teste realizado para aparecer todas as perguntas: ?-findall((ID,Texto,Materia), pergunta(ID,Texto,Materia), Lista).
