@@ -75,7 +75,7 @@ justificar(Curso) :-
            )).
 
 % iniciar questionário
-inicio :-
+iniciar/0 :-
     perguntas(Lista),
     retractall(materia_escolhida(_)),
     perguntar_lista(Lista),
