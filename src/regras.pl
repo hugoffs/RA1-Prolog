@@ -10,14 +10,27 @@
     ● Conduzir o questionário de forma interativa.
     ● Armazenar as respostas do usuário dinamicamente (usando assertz/1)
 */
+
+
+% Lê uma linha, normaliza para minúsculas e aceita SOMENTE "s" ou "n" como nos requisitos do trabalho.
+ler_sn(Resp) :-
+    read_line_to_string(user_input, Raw),
+    string_lower(Raw, L),
+    ( L = "s" -> Resp = s
+    ; L = "n" -> Resp = n
+    ; format('Input inválido. Digite apenas s ou n e tecle Enter.~n'),
+      ler_sn(Resp)
+    ).
+
 % percorre lista de perguntas recursivamente
 perguntar_lista([]).  % caso base: lista vazia 
 
 perguntar_lista([pergunta(_, Texto, Materia)|Resto]) :-
-    format('~w (sim/nao): ', [Texto]),
-    read_line_to_string(user_input, Resposta),
-    (Resposta = "sim" -> assertz(materia_escolhida(Materia)); true),
-    perguntar_lista(Resto). 
+    format('~w (s/n): ', [Texto]),
+    flush_output,                 % serve para que o prompt apareça antes de ler
+    ler_sn(Resp),
+    ( Resp == s -> assertz(materia_escolhida(Materia)) ; true ),
+    perguntar_lista(Resto).
 
 % ----------------- A FAZER ------------------
 /*
@@ -75,7 +88,7 @@ justificar(Curso) :-
            )).
 
 % iniciar questionário
-iniciar/0 :-
+iniciar :-
     perguntas(Lista),
     retractall(materia_escolhida(_)),
     perguntar_lista(Lista),
