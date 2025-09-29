@@ -1,10 +1,10 @@
 # RA1-Prolog — Sistema de Recomendação de Trilhas (SWI‑Prolog)
 
 Acadêmicos responsáveis:
-Angelo Neto
-Eduardo Mendes Carbonera
-Hugo Fagundes
-Kaio Teles
+# Angelo Neto
+# Eduardo Mendes Carbonera
+# Hugo Fagundes
+# Kaio Teles
 
 Projeto acadêmico em Prolog orientado a disciplina de Programação Lógica e Funcional que conduz um questionário interativo e recomenda uma ou mais trilhas de estudo com base nas respostas do usuário. As regras de recomendação consideram a relevância de diferentes matérias para cada trilha e apresentam justificativas.
 
